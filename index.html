@@ -14,14 +14,17 @@
             background-color: black;
             color: white;
             font-family: 'Source Code Pro', monospace;
+            overflow: hidden; /* Prevent scrollbars */
         }
         .content {
             text-align: left; /* Align text content to the left */
-            max-width: 800px; /* Optional: constrain width for better readability */
+            max-width: 90%; /* Constrain width for better readability on small screens */
+            width: 600px; /* Max width for larger screens */
         }
         .container {
             display: flex;
-            gap: 40px; /* Space between the two columns of links */
+            flex-direction: column; /* Stack columns vertically on small screens */
+            gap: 20px; /* Space between sections */
         }
         .links, .extra-links {
             display: flex;
@@ -39,14 +42,19 @@
         }
         h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 2rem; /* Adjust font size for smaller screens */
             margin-bottom: 20px; /* Space below the title */
         }
         p {
             margin: 0;
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1rem; /* Adjust font size for smaller screens */
             margin-bottom: 30px; /* Space below the subtitle */
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row; /* Stack columns side by side on larger screens */
+                gap: 40px; /* Increase space between columns */
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
@@ -55,7 +63,7 @@
     <div class="content">
         <h1>Parven</h1>
         <p>I am a beginner C++ programmer and game developer, who has been doing this for almost 4 years. I am learning every day; nothing special about me, just a boring person. At least you visited my page, haha.</p>
-        <p>--------------------------------------------------</p>
+        <p>------------------------------</p>
         <div class="container">
             <div class="links">
                 <p>Portfolio</p>
