@@ -9,16 +9,33 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
             background-color: black;
             color: white;
             font-family: 'Source Code Pro', monospace;
-            text-align: center;
+        }
+        .content {
+            text-align: left; /* Align text content to the left */
+            max-width: 800px; /* Optional: constrain width for better readability */
         }
         .container {
-            text-align: left; /* Align text to the left */
+            display: flex;
+            gap: 40px; /* Space between the two columns of links */
+        }
+        .links, .extra-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align links to the left within their column */
+        }
+        .links a, .extra-links a {
+            color: rgb(85, 144, 254);
+            text-decoration: none;
+            margin: 10px 0; /* Margin on top and bottom for spacing */
+            display: block;
+        }
+        .links a:hover, .extra-links a:hover {
+            text-decoration: underline;
         }
         h1 {
             margin: 0;
@@ -31,26 +48,29 @@
             max-width: 600px;
             margin-bottom: 30px; /* Space below the subtitle */
         }
-        a {
-            color: rgb(85, 144, 254);
-            text-decoration: none;
-            margin: 10px 0; /* Margin on top and bottom for spacing */
-            display: block;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="content">
         <h1>Parven</h1>
-        <p>I am a novice C++ programmer and game developer, who has been doing this for almost 4 years. I am learning every day; nothing special about me, just a boring person. At least you visited my page, haha.</p>
-        <a href="https://github.com/Parven05">Github</a>
-        <a href="https://parven.itch.io/">Itch.io</a>
-        <a href="https://www.youtube.com/@Parven05">Youtube</a>
-        <a href="https://parven.artstation.com/">Artstation</a>
+        <p>I am a beginner C++ programmer and game developer, who has been doing this for almost 4 years. I am learning every day; nothing special about me, just a boring person. At least you visited my page, haha.</p>
+        <p>--------------------------------------------------</p>
+        <div class="container">
+            <div class="links">
+                <p>Portfolio</p>
+                <a href="https://github.com/Parven05">Github</a>
+                <a href="https://parven.itch.io/">Itch.io</a>
+                <a href="https://www.youtube.com/@Parven05">Youtube</a>
+                <a href="https://parven.artstation.com/">Artstation</a>
+            </div>
+            <div class="extra-links">  
+                <p>Contact</p>          
+                <a href="mailto:parvendranofficial05@gmail.com">Email</a>
+                <a href="https://discordapp.com/users/900937633646137374">Discord</a>
+                <!-- Add more links here if needed -->
+            </div>
+        </div>
     </div>
 </body>
 </html>
