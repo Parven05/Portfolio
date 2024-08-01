@@ -34,7 +34,7 @@
             flex-direction: column; /* Stack columns vertically on small screens */
             gap: 20px; /* Space between sections */
         }
-        .section-title {            
+        .section-title {
             border-radius: 5px; /* Rounded corners for section titles */
             padding: 10px; /* Space inside the border */
             background-color: #333; /* Dark background for section title */
@@ -74,13 +74,33 @@
                 gap: 40px; /* Increase space between columns */
             }
         }
-
         /* Keyframes for border color animation */
         @keyframes border-color-change {
             0% { border-color: red; }
             33% { border-color: green; }
             66% { border-color: blue; }
             100% { border-color: red; }
+        }
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            .card {
+                padding: 15px; /* Reduce padding for smaller screens */
+                width: 90%; /* Full width on small screens */
+            }
+            h1 {
+                font-size: 1.5rem; /* Smaller font size for mobile screens */
+            }
+            p {
+                font-size: 0.9rem; /* Smaller font size for mobile screens */
+                margin-bottom: 20px; /* Reduce space below paragraph */
+            }
+            .section-title {
+                padding: 8px; /* Reduce padding for section titles on mobile */
+            }
+            .links a, .extra-links a {
+                font-size: 0.9rem; /* Smaller font size for links on mobile */
+                margin: 4px 0; /* Reduce margin for links on mobile */
+            }
         }
     </style>
     <!-- Font Awesome CDN -->
@@ -90,7 +110,8 @@
 <body>
     <div class="card">
         <div class="content">
-            <h1>Parven</h1>I’m a beginner C++ programmer and game developer with almost 4 years of experience. I’m learning new things all the time and right now, I’m really into game engine development. Just trying things out—nothing too fancy, just a mix of serious work and some creative ideas!</p>
+            <h1>Parven</h1>
+            <p>I’m a beginner C++ programmer and game developer with almost 4 years of experience. I’m learning new things all the time and right now, I’m really into game engine development. Just trying things out—nothing too fancy, just a mix of serious work and some creative ideas!</p>
             <div class="container">
                 <div class="links">
                     <div class="section-title">Portfolio</div>
