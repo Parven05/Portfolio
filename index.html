@@ -3,91 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About me with Wave Background</title>
+  <title>Parven – Graphics Background</title>
   <style>
-    body, html {
+    html, body {
       margin: 0;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
       font-family: 'Source Code Pro', monospace;
-      background: #282828; /* fallback background */
-      color: #ebdbb2;
+      background-color: #000;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
       z-index: 0;
     }
+
     canvas#bgCanvas {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       z-index: -1;
       display: block;
     }
+
     .card {
-      background-color: #3c3836;
-      border: 5px solid #ebdbb2;
-      border-radius: 0;
+      background-color: #111;
+      border: 2px solid #fff;
       padding: 20px;
       max-width: 600px;
       width: 90%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-      color: #ebdbb2;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      color: #fff;
       text-align: left;
     }
+
     h1 {
-      margin: 0 0 20px 0;
+      margin-top: 0;
       font-size: 2rem;
-      color: #fabd2f;
+      color: #fff;
     }
+
     p {
-      margin-bottom: 30px;
       font-size: 1rem;
+      line-height: 1.5;
     }
+
     .container {
       display: flex;
       gap: 40px;
       flex-wrap: wrap;
+      margin-top: 20px;
     }
+
     .section-title {
-      background-color: #504945;
-      padding: 10px;
+      font-weight: bold;
       margin-bottom: 10px;
-      border-radius: 5px;
-      color: #fabd2f;
+      color: #fff;
     }
+
     .links, .extra-links {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
+
     a {
-      color: #83a598;
+      color: #ccc;
       text-decoration: none;
       display: flex;
       align-items: center;
     }
+
     a:hover {
-      color: #fe8019;
+      color: #fff;
       text-decoration: underline;
     }
+
     a i {
       margin-right: 8px;
     }
+
     @media (max-width: 480px) {
       h1 { font-size: 1.5rem; }
-      p { font-size: 0.9rem; margin-bottom: 20px; }
+      p { font-size: 0.9rem; }
       .card { padding: 15px; }
-      .section-title { padding: 8px; }
     }
   </style>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
+
   <canvas id="bgCanvas"></canvas>
 
   <div class="card">
@@ -114,77 +122,69 @@
     </div>
   </div>
 
-<script>
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let time = 0;
+  <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, time = 0;
 
-  function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  function draw() {
-    time += 0.02;
-
-    ctx.clearRect(0, 0, width, height);
-
-    // Wave parameters
-    const amplitude = 30;
-    const wavelength = 150;
-    const speed = 2;
-
-    // Create gradient for the wave color
-    const gradient = ctx.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, '#fb4934');  // Red
-    gradient.addColorStop(0.5, '#b8bb26'); // Green
-    gradient.addColorStop(1, '#83a598');  // Blue
-
-    ctx.fillStyle = '#282828'; // Background base
-    ctx.fillRect(0, 0, width, height);
-
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 3;
-
-    ctx.beginPath();
-    for(let x = 0; x <= width; x++) {
-      const y = height/2 + amplitude * Math.sin((x / wavelength) * 2 * Math.PI - time * speed);
-      if(x === 0) {
-        ctx.moveTo(x, y);
-      } else {
-        ctx.lineTo(x, y);
-      }
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
     }
-    ctx.stroke();
 
-    // Draw multiple layered waves with phase shifts for depth
-    for(let layer = 1; layer <= 3; layer++) {
-      ctx.beginPath();
-      ctx.strokeStyle = `rgba(251, 73, 52, ${0.3 / layer})`; // varying red transparency
-      const phaseShift = layer * Math.PI / 2;
-      const layerAmplitude = amplitude / (layer + 1);
-      const layerSpeed = speed * (layer + 0.5);
-      for(let x = 0; x <= width; x++) {
-        const y = height/2 + layerAmplitude * Math.sin((x / wavelength) * 2 * Math.PI - time * layerSpeed + phaseShift);
-        if(x === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawWave() {
+      ctx.lineWidth = 2;
+      const colors = ['#ff0000', '#00ff00', '#0000ff'];
+      colors.forEach((color, index) => {
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        for (let x = 0; x <= width; x++) {
+          const y = height / 2 + Math.sin((x + time * 100 + index * 100) * 0.01) * 20;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
         }
-      }
-      ctx.stroke();
+        ctx.stroke();
+      });
     }
 
-    requestAnimationFrame(draw);
-  }
+    function drawGizmo() {
+      const cx = width - 60;
+      const cy = 60;
+      const len = 40;
+      const angle = time * 0.5;
 
-  draw();
-</script>
+      const axes = [
+        { color: '#ff0000', x: Math.cos(angle) * len, y: Math.sin(angle) * len }, // X
+        { color: '#00ff00', x: Math.cos(angle + 2) * len, y: Math.sin(angle + 2) * len }, // Y
+        { color: '#0000ff', x: Math.cos(angle + 4) * len, y: Math.sin(angle + 4) * len }  // Z
+      ];
+
+      axes.forEach(axis => {
+        ctx.beginPath();
+        ctx.strokeStyle = axis.color;
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + axis.x, cy + axis.y);
+        ctx.stroke();
+      });
+    }
+
+    function draw() {
+      time += 0.01;
+      ctx.clearRect(0, 0, width, height);
+
+      drawWave();
+      drawGizmo();
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
 
 </body>
 </html>
