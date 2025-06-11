@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Parven – Graphics Background</title>
+  <title>Parven</title>
   <style>
     html, body {
       margin: 0;
@@ -110,7 +110,6 @@
         <div class="section-title">Portfolio</div>
         <a href="https://github.com/Parven05"><i class="fab fa-github"></i>Github</a>
         <a href="https://parven.itch.io/"><i class="fab fa-itch-io"></i>Itch.io</a>
-        <a href="https://www.youtube.com/@Parven05"><i class="fab fa-youtube"></i>Youtube</a>
         <a href="https://parven.artstation.com/"><i class="fab fa-artstation"></i>Artstation</a>
       </div>
       <div class="extra-links">
@@ -152,33 +151,11 @@
       });
     }
 
-    function drawGizmo() {
-      const cx = width - 60;
-      const cy = 60;
-      const len = 40;
-      const angle = time * 0.5;
-
-      const axes = [
-        { color: '#ff0000', x: Math.cos(angle) * len, y: Math.sin(angle) * len }, // X
-        { color: '#00ff00', x: Math.cos(angle + 2) * len, y: Math.sin(angle + 2) * len }, // Y
-        { color: '#0000ff', x: Math.cos(angle + 4) * len, y: Math.sin(angle + 4) * len }  // Z
-      ];
-
-      axes.forEach(axis => {
-        ctx.beginPath();
-        ctx.strokeStyle = axis.color;
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(cx + axis.x, cy + axis.y);
-        ctx.stroke();
-      });
-    }
-
     function draw() {
       time += 0.01;
       ctx.clearRect(0, 0, width, height);
 
       drawWave();
-      drawGizmo();
 
       requestAnimationFrame(draw);
     }
