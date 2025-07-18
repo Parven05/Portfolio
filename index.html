@@ -8,160 +8,94 @@
     html, body {
       margin: 0;
       height: 100%;
-      overflow: hidden;
-      font-family: 'Source Code Pro', monospace;
-      background-color: #000;
-      color: #fff;
+      background-color: #121212;
+      font-family: 'Fira Code', monospace;
+      color: #ddd;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 0;
-    }
-
-    canvas#bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      display: block;
     }
 
     .card {
-      background-color: #111;
-      border: 2px solid #fff;
-      padding: 20px;
+      position: relative;
+      background-color: #1e1e1e;
+      padding: 24px;
+      border-radius: 12px;
       max-width: 600px;
       width: 90%;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-      color: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       text-align: left;
     }
 
     h1 {
-      margin-top: 0;
+      margin: 0 0 16px;
       font-size: 2rem;
       color: #fff;
     }
 
     p {
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
-    .container {
+    .icon-row {
+      position: absolute;
+      top: 24px;
+      right: 24px;
       display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      gap: 12px;
     }
 
-    .section-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #fff;
+    .icon-row a {
+      font-size: 1.3rem;
+      transition: transform 0.2s;
     }
 
-    .links, .extra-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .icon-row a:hover {
+      transform: scale(1.2);
     }
 
-    a {
-      color: #ccc;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    a i {
-      margin-right: 8px;
-    }
+    .fa-linkedin     { color: #0077b5; }
+    .fa-github       { color: #ffffff; }
+    .fa-itch-io      { color: #fa5c5c; }
+    .fa-artstation   { color: #13AFF0; }
+    .fa-envelope     { color: #b84dff; }
+    .fa-discord      { color: #5865F2; }
+    .fa-globe        { color: #3ddc84; }
 
     @media (max-width: 480px) {
       h1 { font-size: 1.5rem; }
       p { font-size: 0.9rem; }
-      .card { padding: 15px; }
+      .card { padding: 16px; }
+      .icon-row {
+        top: 16px;
+        right: 16px;
+        gap: 10px;
+      }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <canvas id="bgCanvas"></canvas>
-
   <div class="card">
+    <div class="icon-row">
+      <a href="https://www.linkedin.com/in/parven" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Parven05" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://parven.itch.io/" title="Itch.io"><i class="fab fa-itch-io"></i></a>
+      <a href="https://parven.artstation.com/" title="ArtStation"><i class="fab fa-artstation"></i></a>
+      <a href="mailto:parven5@proton.me" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://discordapp.com/users/900937633646137374" title="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://parven05.github.io/Parven-Archive/" title="Website"><i class="fas fa-globe"></i></a>
+    </div>
+
     <h1>Parven</h1>
     <p>
-I used to make games, but now I’m exploring DirectX and learning graphics programming. I’m especially interested in how shaders work, how GPUs render visuals, and how to optimize game engine performance.
-
-I’m also curious about the semiconductor industry—especially GPU-related hardware, which aligns well with my electronics degree. I enjoy following whatever interests me across both software and hardware.
+      I enjoy building things from scratch, like game engines, graphics tools, and simulations. I mostly use C and C++. Right now, I’m learning the Vulkan API to understand how GPUs work and how to make systems faster. I also like math and physics because they help me see how things work inside.
     </p>
-    <div class="container">
-      <div class="links">
-        <div class="section-title">Portfolio</div>
-        <a href="https://github.com/Parven05"><i class="fab fa-github"></i>Github</a>
-        <a href="https://parven.itch.io/"><i class="fab fa-itch-io"></i>Itch.io</a>
-        <a href="https://parven.artstation.com/"><i class="fab fa-artstation"></i>Artstation</a>
-      </div>
-      <div class="extra-links">
-        <div class="section-title">Contact</div>
-        <a href="mailto:parven5@proton.me"><i class="fas fa-envelope"></i>Email</a>
-        <a href="https://discordapp.com/users/900937633646137374"><i class="fab fa-discord"></i>Discord</a>
-        <a href="https://www.linkedin.com/in/parven"><i class="fab fa-linkedin"></i>Linkedin</a>
-      </div>
-    </div>
   </div>
-
-  <script>
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height, time = 0;
-
-    function resizeCanvas() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function drawWave() {
-      ctx.lineWidth = 2;
-      const colors = ['#ff0000', '#00ff00', '#0000ff'];
-      colors.forEach((color, index) => {
-        ctx.beginPath();
-        ctx.strokeStyle = color;
-        for (let x = 0; x <= width; x++) {
-          const y = height / 2 + Math.sin((x + time * 100 + index * 100) * 0.01) * 20;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      });
-    }
-
-    function draw() {
-      time += 0.01;
-      ctx.clearRect(0, 0, width, height);
-
-      drawWave();
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
 
 </body>
 </html>
