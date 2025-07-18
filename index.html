@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parven</title>
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
-      height: 100%;
+      padding: 0;
       background-color: #121212;
       font-family: 'Fira Code', monospace;
       color: #ddd;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
       padding: 16px;
     }
 
     .card {
-      position: relative;
       background-color: #1e1e1e;
       padding: 24px;
       border-radius: 12px;
-      max-width: 600px;
-      width: 100%;
+      margin-bottom: 32px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      text-align: left;
     }
 
     h1 {
@@ -41,12 +42,10 @@
     }
 
     .icon-row {
-      position: absolute;
-      top: 24px;
-      right: 24px;
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-bottom: 16px;
     }
 
     .icon-row a {
@@ -58,20 +57,86 @@
       transform: scale(1.2);
     }
 
-    .fa-linkedin     { color: #0077b5; }
-    .fa-github       { color: #ffffff; }
-    .fa-itch-io      { color: #fa5c5c; }
-    .fa-artstation   { color: #13AFF0; }
-    .fa-envelope     { color: #b84dff; }
-    .fa-discord      { color: #7289da; }
-    .fa-globe        { color: #1abc9c; }
+    .fa-linkedin {
+      color: #0077b5;
+    }
+
+    .fa-github {
+      color: #ffffff;
+    }
+
+    .fa-itch-io {
+      color: #fa5c5c;
+    }
+
+    .fa-artstation {
+      color: #13AFF0;
+    }
+
+    .fa-envelope {
+      color: #b84dff;
+    }
+
+    .fa-discord {
+      color: #7289da;
+    }
+
+    .fa-globe {
+      color: #1abc9c;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .project-card .content {
+      padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      flex-grow: 1;
+    }
+
+    .project-card a {
+      margin-top: 12px;
+      color: #1abc9c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 600px) {
-      .card {
-        padding: 16px;
-        text-align: center;
-      }
-
       h1 {
         font-size: 1.5rem;
       }
@@ -81,34 +146,138 @@
       }
 
       .icon-row {
-        position: static;
         justify-content: center;
-        margin-bottom: 12px;
-        gap: 16px;
       }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet" />
 </head>
+
 <body>
 
-  <div class="card">
-    <div class="icon-row">
-      <a href="https://www.linkedin.com/in/parven" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/Parven05" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://parven.itch.io/" title="Itch.io"><i class="fab fa-itch-io"></i></a>
-      <a href="https://parven.artstation.com/" title="ArtStation"><i class="fab fa-artstation"></i></a>
-      <a href="mailto:parven5@proton.me" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://discordapp.com/users/900937633646137374" title="Discord"><i class="fab fa-discord"></i></a>
-      <a href="https://parven05.github.io/Parven-Archive/" title="Archive"><i class="fas fa-globe"></i></a>
+  <div class="container">
+
+   <div class="card">
+      <h1>Parven</h1>
+      <p>
+        I enjoy building things from scratch, like game engines, graphics tools, and simulations. I mostly use C and
+        C++. Right now, I’m learning the Vulkan API to understand how GPUs work and how to make systems faster. I also
+        like math and physics because they help me see how things work inside.
+      </p>
+      <div class="icon-row">
+        <a href="https://www.linkedin.com/in/parven" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Parven05" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://parven.itch.io/" title="Itch.io"><i class="fab fa-itch-io"></i></a>
+        <a href="https://parven.artstation.com/" title="ArtStation"><i class="fab fa-artstation"></i></a>
+        <a href="mailto:parven5@proton.me" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://discordapp.com/users/900937633646137374" title="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://parven05.github.io/Parven-Archive/" title="Archive"><i class="fas fa-globe"></i></a>
+      </div>
     </div>
 
-    <h1>Parven</h1>
-    <p>
-      I enjoy building things from scratch, like game engines, graphics tools, and simulations. I mostly use C and C++. Right now, I’m learning the Vulkan API to understand how GPUs work and how to make systems faster. I also like math and physics because they help me see how things work inside.
-    </p>
+    <!-- Projects Section -->
+    <div class="card">
+      <h1>Projects</h1>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/460224859-c458581d-6060-4997-8bd6-bd608d7d5127.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTU1MTAsIm5iZiI6MTc1Mjg1NTIxMCwicGF0aCI6Ii8xMDE3OTY4MTIvNDYwMjI0ODU5LWM0NTg1ODFkLTYwNjAtNDk5Ny04YmQ2LWJkNjA4ZDdkNTEyNy5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNjEzMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00ZGQ4OTAwNzgyOTY5YTBlNWFjMmNhMzdiMTkyYmUyMmM2MWExZWY1OWNlYTViMzgwOTI2OTkwM2ViMDE2NWE4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.5mHZstAQ78LIhQe2F8su0emgfnpU26G9fZ2R7edLvFg"
+            alt="Project 4">
+          <div class="content">
+            <h3>Realm of Knowledge</h3>
+            <p>A puzzle-adventure game that blends logic challenges with programming quizzes made in Unity. Players use
+              cubes to activate switches, open doors, and solve obstacles to progress.</p>
+            <a href="https://github.com/Parven05/Realm-of-Knowledge">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/460230758-8c00db18-4b69-41ba-a368-6cefe175a758.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTU3NTYsIm5iZiI6MTc1Mjg1NTQ1NiwicGF0aCI6Ii8xMDE3OTY4MTIvNDYwMjMwNzU4LThjMDBkYjE4LTRiNjktNDFiYS1hMzY4LTZjZWZlMTc1YTc1OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNjE3MzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mMjEzN2Y0NjMzZWFhNGE4YjAyZTVjODY0NzMwMjlhMjkzMGFjOGZiM2VkMjRmYTkxZGUyMWJhMWM4YjM3NzI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.MsXsPa8VDoTaYcLeU8hk795kK-5v-UZHrzIPeLdjQoo"
+            alt="Project 4">
+          <div class="content">
+            <h3>Gradient Boosting-Based Model for Predicting Carbon Emissions</h3>
+            <p>A carbon emission calculator built using Gradient Boosting, selected after testing various models (ANN,
+              KNN, SVM, etc.) based on use case performance.</p>
+            <a href="https://github.com/Parven05/Carbon-Predictor">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/335109408-fb1fe3ab-006e-4425-ae8c-cccd8e03defa.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTA0OTUsIm5iZiI6MTc1Mjg1MDE5NSwicGF0aCI6Ii8xMDE3OTY4MTIvMzM1MTA5NDA4LWZiMWZlM2FiLTAwNmUtNDQyNS1hZThjLWNjY2Q4ZTAzZGVmYS5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNDQ5NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MjcxMmQzMjYzNjlkMDNiNzQ3YTZjYzc5YTdmZTZhM2I2OTI1Zjk3MDU4ZTg3MzMwZDNlYWRiODAyODk2MzFlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Jf6HYX0QTDK6ZHm3Y3E3SkAPzkF9vUGV4fhgRgi_rEg"
+            alt="Project 1">
+          <div class="content">
+            <h3>2D Physics Engine</h3>
+            <p>A basic 2D physics engine in C++ using SFML, built from scratch to explore core physics concepts.</p>
+            <a href="https://github.com/Parven05/2D-Physics-Engine">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/460244835-e1ea43fd-0d4c-464c-8200-1a6b86bf6f10.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTA2OTIsIm5iZiI6MTc1Mjg1MDM5MiwicGF0aCI6Ii8xMDE3OTY4MTIvNDYwMjQ0ODM1LWUxZWE0M2ZkLTBkNGMtNDY0Yy04MjAwLTFhNmI4NmJmNmYxMC5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNDUzMTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yMWUzZDE4MWE3ZWQ3OTg4YTA2NDMwZjFhYzJmMTgzY2EzMDg2MjBjMTg5N2YzNTMwNzY2MDdkZGRiYTliMDg0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pEG7c_sb9V1F14THO3bEEq8gER2lafVOl34AdE6pCfM"
+            alt="Project 2">
+          <div class="content">
+            <h3>Brownian Motion</h3>
+            <p>Simulates Brownian motion with 2D particles in C++ using raylib. Particles move via small random forces
+              each frame, mimicking natural microscopic motion without gravity.</p>
+            <a href="https://github.com/Parven05/Brownian-Motion">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/460233154-c49e6356-c67a-4653-82e4-f1027e032122.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTA3ODQsIm5iZiI6MTc1Mjg1MDQ4NCwicGF0aCI6Ii8xMDE3OTY4MTIvNDYwMjMzMTU0LWM0OWU2MzU2LWM2N2EtNDY1My04MmU0LWYxMDI3ZTAzMjEyMi5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNDU0NDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NmVjYTc5ZjVkMTczYzVmMmExMTA1N2JjNGMxZmVlZjEyMGNjOTkxYzE1MGU5OWIyNDc3ZDY2NWRlNDllNGM4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.9zYsGTOm_LjkzW-OFoFTAV2x8XfaV64D8K8yLt-aY5E"
+            alt="Project 3">
+          <div class="content">
+            <h3>Project Rover</h3>
+            <p>A stylized Unity rover scene made using the Built-in Render Pipeline and Symmasolan's Stylized Cel Shader
+              (SCS) to explore cel shading, outlines, and real-time lighting.</p>
+            <a href="https://github.com/Parven05/Project-Rover">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://img.itch.zone/aW1hZ2UvMzYzMjI2MS8yMTYxNTM1MC5wbmc=/original/zw5dU8.png" alt="Project 4">
+          <div class="content">
+            <h3>LogicSim</h3>
+            <p>LogicSim is a forked Unity-based logic gate simulator, modified to suit my needs. It’s built for learning
+              and exploring basic digital circuits.</p>
+            <a href="https://github.com/Parven05/LogicSim">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/460228924-14231ded-5d8f-4e77-bd1f-d7eebe26b511.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTExMzEsIm5iZiI6MTc1Mjg1MDgzMSwicGF0aCI6Ii8xMDE3OTY4MTIvNDYwMjI4OTI0LTE0MjMxZGVkLTVkOGYtNGU3Ny1iZDFmLWQ3ZWViZTI2YjUxMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNTAwMzFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03MTlkZWVmZTBmMjc4ZTM1NmVlM2Y1NWRiMzFiZGNiMWUxNjYwYjgwMTNhYTliODY2NWNjY2ViOWMyNjFiZjE4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.PQX_qkE5NLnIRaYUK04U75wzBZD6fU4tvQ1tGZFKuj8"
+            alt="Project 4">
+          <div class="content">
+            <h3>Perlin Terrain Generation</h3>
+            <p>A simple experiment using Perlin noise to generate and visualize terrain in realtime by using Raylib.</p>
+            <a href="https://github.com/Parven05/Perlin-Terrain">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="https://private-user-images.githubusercontent.com/101796812/468128209-49c0833f-3977-4410-8063-ea471bbf5d38.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NTcxNTMsIm5iZiI6MTc1Mjg1Njg1MywicGF0aCI6Ii8xMDE3OTY4MTIvNDY4MTI4MjA5LTQ5YzA4MzNmLTM5NzctNDQxMC04MDYzLWVhNDcxYmJmNWQzOC5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxNjQwNTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MmEwODk2NGYxNDA0NTI1YjQ0ZDExODViYzMzZjJhYTQ4MGYyYzE5YWQ4MzQ0OGRmODIxOGJkOTMyMzNjOTJhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cM3BmHSxwRmrriNk0cvPBNtBQ6YAm7p1fYtrRUZexws"
+            alt="Project 4">
+          <div class="content">
+            <h3>Blob Engine - Soft Body 2D Game Engine</h3>
+            <p>A 2D soft-body game engine using a spring-mass system, where all in-game physics are driven by soft-body
+              dynamics. Developed as a duo project.</p>
+            <a href="https://github.com/BlobEngine/BlobEngine">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
 </body>
+
 </html>
