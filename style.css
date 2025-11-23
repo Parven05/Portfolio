@@ -155,8 +155,16 @@ p {
   background-color: #27ae60;
 }
 
+.status-tag.done i {
+    margin-left: 6px;
+}
+
 .status-tag.progress {
   background-color: #e67e22;
+}
+
+.status-tag.progress i {
+    margin-left: 6px;
 }
 
 .tech-stack span {
@@ -165,11 +173,17 @@ p {
   font-size: 0.7rem;
   padding: 2px 6px;
   margin: 2px;
+  margin-right: -5px;
   display: inline-block;
   border-radius: 4px;
 }
 
+.tech-stack span i {
+  margin-right: 4px;
+}
+
 .year-stack-2025 span {
+  margin-left: 2px;
   margin-bottom: 2px;
   background-color: #bca91a;
   color: #121212;
@@ -180,7 +194,12 @@ p {
   font-weight: 600;
 }
 
+.year-stack-2025 span i {
+  margin-right: 4px;
+}
+
 .year-stack-2024 span {
+  margin-left: 2px;
   margin-bottom: 2px;
   background-color: #bc531a;
   color: #121212;
@@ -191,7 +210,12 @@ p {
   font-weight: 600;
 }
 
+.year-stack-2024 span i {
+  margin-right: 4px;
+}
+
 .year-stack-2023 span {
+  margin-left: 2px;
   margin-bottom: 2px;
   background-color: #45bc1a;
   color: #121212;
@@ -200,6 +224,10 @@ p {
   display: inline-block;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.year-stack-2023 span i {
+  margin-right: 4px;
 }
 
 footer {
