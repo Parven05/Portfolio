@@ -230,6 +230,28 @@ p {
   margin-right: 4px;
 }
 
+.music-card h1 {
+  margin-top: -5px;
+}
+
+.audio-wrapper {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px; 
+}
+
+.music-card audio {
+  width: 250px; 
+  max-width: 100%;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.music-card p {
+  margin-bottom: 5px; 
+}
+
 footer {
   text-align: center;
   padding: 20px;
