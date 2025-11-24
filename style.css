@@ -345,7 +345,7 @@ footer p {
     font-size: 1.4rem;
   }
 
-  .project-card > img {
+  .project-card .song-card > img {
     height: 140px;
   }
 
@@ -380,7 +380,7 @@ footer p {
     font-size: 1.3rem;
   }
 
-  .project-card img {
+  .project-card .song-card img {
     height: 120px;
   }
 
